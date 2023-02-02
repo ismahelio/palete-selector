@@ -33,15 +33,23 @@
         console.log("fxhash: TRIGGER PREVIEW")
       }
       //---- /do not edit the following code
+      let W //canvas Width
+      let H //canvas Height
+      let S //scale factor
+      let R //Resolution
+      let HDR //HD RESOLUTION
     </script>
-    <script src="./utils.js"></script>
+
 
     <link rel="stylesheet" href="./style.css">
 
     <!-- if you need to import js scripts do it here -->
+    <script src="./utils.js"></script>
+    <script src="./setupParams.js"></script>
+    <script src="./sketch.js"></script>
+    <script src="./p5.min.js"></script>
   </head>
   <body>
-    <canvas id="myCanvas" width="500" height="500" style="border:1px solid #000000;" ></canvas>
     <!-- WEBPACK will inject the bundle.js here -->
   </body>
 </html>
