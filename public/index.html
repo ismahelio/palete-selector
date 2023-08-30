@@ -38,6 +38,8 @@
       let S //scale factor
       let R //Resolution
       let HDR //HD RESOLUTION
+      let CS //Colors
+      let PCS = [] //Palete colors
     </script>
 
 
@@ -46,10 +48,14 @@
     <!-- if you need to import js scripts do it here -->
     <script src="./utils.js"></script>
     <script src="./setupParams.js"></script>
+    <script src="./colors.js"></script>
     <script src="./sketch.js"></script>
     <script src="./p5.min.js"></script>
   </head>
   <body>
+    <div id="color_list">
+      This is Div box.
+  </div>
     <!-- WEBPACK will inject the bundle.js here -->
   </body>
 </html>

@@ -1,15 +1,15 @@
 function setupC(){
     // CANVAS SIZE IS INDEPENDENT
 
-    W = choice([2050])
-    H = 2900
+    W = 2000
+    H = 2000
 
     strokeCap(ROUND);
     noSmooth()
     // ADJUST TO SCREEN
     let wh = W/H
-    let windowW = window.innerWidth * 0.98
-    let windowH = window.innerHeight * 0.98
+    let windowW = window.innerWidth * 0.9
+    let windowH = window.innerHeight * 0.9
     let whWin = windowW / windowH
     let wW
     let wH
@@ -31,9 +31,19 @@ function setupC(){
     R = window.devicePixelRatio
     pixelDensity(R);
     createCanvas(wW, wH);
-    background(0);
+    background(255);
 
+    console.log("canvas size")
+    console.log(wW, wH)
+
+    let el = document.getElementById('color_list');
+    el.style.position = "absolute"; // So it is on top of everything
+    el.style.textAlign = "center"    
+    el.style.top = window.innerHeight * .75 + 'px';
+    el.style.width = windowW + 'px';
 
 
     }
+
+
 
