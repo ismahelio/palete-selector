@@ -1,7 +1,8 @@
 function setup () {
     console.log("hello")
-    setupC()
     getColors()
+    setupC()
+    drawColors()
 
 }
 

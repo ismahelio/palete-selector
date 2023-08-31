@@ -39,8 +39,25 @@ function setupC(){
     let el = document.getElementById('color_list');
     el.style.position = "absolute"; // So it is on top of everything
     el.style.textAlign = "center"    
-    el.style.top = window.innerHeight * .75 + 'px';
-    el.style.width = windowW + 'px';
+
+    if(windowH < windowW){
+        el.style.width = windowH + 'px';
+        el.style.top = ((window.innerHeight - wH) / 2) +  (wH * .65) + 'px';
+        el.style.backgroundColor = "red"
+
+    }
+    else{
+        el.style.width = windowW + 'px';
+        el.style.top = ((window.innerHeight - wH) / 2) +  (wH * .65) + 'px';
+        el.style.backgroundColor = "blue"
+
+
+    }
+    let colBck = CS[CS.length - 1]
+    let colText = CS[0]
+    el.style.backgroundColor = "rgb(" + colBck[0] + "," + colBck[1] + "," + colBck[2] + ")"
+    el.style.color = "rgb(" + colText[0] + "," + colText[1] + "," + colText[2] + ")"
+
 
 
     }
