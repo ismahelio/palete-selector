@@ -33,6 +33,12 @@ function setupC(){
     createCanvas(wW, wH);
     background(255);
 
+    //////////////// LOAD IMAGE
+
+    // function setup() {
+    // image(img, 0, 0);
+    // }
+
     console.log("canvas size")
     console.log(wW, wH)
 
@@ -53,8 +59,8 @@ function setupC(){
 
 
     }
-    let colBck = CS[CS.length - 1]
-    let colText = CS[0]
+    let colBck = [0,0,0]
+    let colText = [255,255,255]
     el.style.backgroundColor = "rgb(" + colBck[0] + "," + colBck[1] + "," + colBck[2] + ")"
     el.style.color = "rgb(" + colText[0] + "," + colText[1] + "," + colText[2] + ")"
 

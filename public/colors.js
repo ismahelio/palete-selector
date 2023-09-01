@@ -1,34 +1,7 @@
 
-let allColors = {
-    "1": [[103,43,0],[66,71,75],[150,133,1],[251,166,23],[255,236,14],[3,7,6]],
-    "2": [[47,48,53],[173,29,20],[54,144,206],[140,194,160],[228,204,34],[208,219,97]],
-    "3": [[37,54,62],[93,104,98],[229,216,0],[233,233,243],[104,22,28]],
-    "4": [[57,76,93],[120,137,153],[255,192,206],[255,247,129],[244,250,246],[9,27,29]],
-    "5": [[23,23,23],[95,95,95],[143,143,143],[228,228,228],[175,175,175]],
-    "6": [[30,33,16],[42,58,32],[213,114,13],[199,153,91],[225,212,196],[138,24,13]],
-    "7": [[6,13,23],[222,31,83],[111,160,193],[242,194,60],[217,234,242],[128,135,141]],
-    "8": [[6,49,3],[210,20,0],[31,112,106],[241,94,17],[225,171,10],[224,201,147]],
-    "9": [[14,42,54],[22,60,81],[44,115,143],[95,182,201],[57,147,173]],
-    "11": [[30,29,34],[157,33,23],[171,71,21],[201,171,61],[209,206,187],[232,230,209]]
-  }
 
 
-function getColors(){
-    //SELECT THE COLORS FROM THE LIST
-    let key = choice(Object.keys(allColors))
-    CS = allColors[key]
-    console.log("Paleta number", key)
-    //SORT COLORS BY DARK
-    let grays = []
-    CS.map(c => {
-        let g = (0.2126*c[0]) + (0.7152 * c[1]) + (0.0722 * c[2])
-        grays.push(g)
-    })
-    CS = sortBy(CS, grays)
-
-  }
-
-  function drawColors(){
+function drawColors(){
         //DRAW THE COLORS
         let nDiv = CS.length
         let barW = (W / nDiv) * S
@@ -67,21 +40,13 @@ function mouseClicked() {
     else if(mouseY > H * .15 * S && mouseY < H * .65 * S){
         console.log("all colors")
         /// Check wich color I am clicking
-        let index
-        /// Iterate all the colors of the palette
-        let nDiv = CS.length
-        let barW = (W / nDiv) * S
-        for (let i = 0; i < nDiv; i++) {
-            let x = barW * i
-            if(mouseX > x && mouseX < x + barW){
-            index = i
-            break
-            } 
-        }
+        ////I
+        let clickColor = get(mouseX, mouseY)
 
-        if(index != undefined){
-            let clickColor = CS[index]
+        if(clickColor != undefined){
             //ADD THE COLOR TO THE PALETTE IF NOT IN THE PCS LIST
+            //Remove the alpha
+            clickColor.splice(3, 1)
             if(!listInList(PCS, clickColor)){
                 PCS.push(clickColor)
                 updateList()
@@ -126,12 +91,9 @@ function drawPalette(){
 // MAKE THE LIST VISIBLE TO COPY IT
 function drawColorList(){
     fill(0);
-    if(PCS.length > 0){
-        fill(PCS[PCS.length - 1])
-    }
     strokeWeight(0)
     textSize(W * S * .03);
-    text('PALETE MAKER', 0, H * S * .135);
+    text('PALETE MAKER: select your colors', 0, H * S * .135);
 
     // UPDATE THE TEXT
 

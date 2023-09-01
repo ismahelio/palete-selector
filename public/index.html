@@ -40,6 +40,7 @@
       let HDR //HD RESOLUTION
       let CS //Colors
       let PCS = [] //Palete colors
+      let IMG //IMAGE
     </script>
 
 
@@ -51,10 +52,62 @@
     <script src="./colors.js"></script>
     <script src="./sketch.js"></script>
     <script src="./p5.min.js"></script>
+    <style>
+      main {
+        border: 1px dashed black;
+      }
+      .active {
+        border: 10px dashed black;
+      }
+      .inactive {
+        border: 0px;
+      }
+    </style>
+    <main></main>
+    <script>
+      const dropzone = document.querySelector("main");
+
+      dropzone.addEventListener("dragenter", event => {
+        event.preventDefault();
+        dropzone.classList.add("active");
+      });
+
+      dropzone.addEventListener("dragleave", event => {
+        event.preventDefault();
+        dropzone.classList.remove("active");
+      });
+
+      dropzone.addEventListener("dragover", event => {
+        event.preventDefault();
+      });
+
+      dropzone.addEventListener("drop", event => {
+        event.preventDefault();
+        dropzone.classList.remove("active");
+        console.log("EVENT!")
+        const file = event.dataTransfer.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.addEventListener("loadend", () => {
+          // const img = document.createElement("img");
+          // img.src = reader.result;
+          // dropzone.append(img);
+          dropzone.classList.add("inactive");
+          IMG = reader.result
+        })
+
+        //IMG = reader.result
+        
+      });
+
+
+
+
+    </script>
   </head>
   <body>
     <div id="color_list">
-      ????
+      DROP AN IMAGE
   </div>
     <!-- WEBPACK will inject the bundle.js here -->
   </body>
